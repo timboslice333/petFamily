@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-petsos-dev-184632-authRole",
+      "UnauthRoleArn": "arn:aws:iam::540464683254:role/amplify-petsos-dev-184632-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::540464683254:role/amplify-petsos-dev-184632-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-petsos-dev-184632-deployment",
+      "UnauthRoleName": "amplify-petsos-dev-184632-unauthRole",
+      "StackName": "amplify-petsos-dev-184632",
+      "StackId": "arn:aws:cloudformation:us-west-2:540464683254:stack/amplify-petsos-dev-184632/f3bbded0-1230-11ee-8f36-02b059ec2389",
+      "AmplifyAppId": "d10crasp2cd51x"
+    },
+    "categories": {
+      "auth": {
+        "petsosff61d863": {}
+      }
+    }
+  }
+}
