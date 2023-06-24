@@ -1,10 +1,11 @@
-import { Text, View, TouchableOpacity, StyleSheet } from "react-native";
+import Colours from "../constants/colors";
+import { Text, View, TouchableOpacity, StyleSheet, Image } from "react-native";
 
 export const DiscoverScreen = ({ navigation }) => {
   return (
     <>
-      <View style={{ marginTop: 100 }}>
-        <Text>DiscoverScreen</Text>
+      <View>
+      <View style={styles.banner} />
         <TouchableOpacity
           style={styles.button}
           onPress={() => navigation.pop()}
@@ -17,12 +18,27 @@ export const DiscoverScreen = ({ navigation }) => {
         >
           <Text style={styles.buttonText}>go to posts screen</Text>
         </TouchableOpacity>
+        <Text>DiscoverScreen</Text>
       </View>
     </>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  banner: {
+    backgroundColor: Colours.primary,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "spaceBetween",
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: 200,
+  },
   button: {
     marginVertical: 10,
     borderRadius: 25,
