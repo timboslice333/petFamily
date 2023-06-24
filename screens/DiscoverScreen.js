@@ -6,6 +6,8 @@ export const DiscoverScreen = ({ navigation }) => {
     <>
       <View>
       <View style={styles.banner} />
+        <TouchableOpacity style={styles.picture_1}>  
+        </TouchableOpacity>
         <TouchableOpacity
           style={styles.button}
           onPress={() => navigation.pop()}
@@ -27,6 +29,13 @@ export const DiscoverScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  picture_1: {
+    borderRadius: 10,
+    alignContent: 'center',
+    position: 'absolute',
+    top: 100,
+    left: 150,
   },
   banner: {
     backgroundColor: Colours.primary,
