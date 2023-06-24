@@ -1,18 +1,15 @@
 import { Text, View, TouchableOpacity, StyleSheet } from "react-native";
 
-export const LostAndFoundScreen = ({navigation}) => {
+export const CameraScreen = ({navigation}) => {
   return (
     <>
       <View style = {{marginTop: 100}}>
-        <Text>LostAndFoundScreen</Text>
+        <Text>CameraScreen</Text>
         <TouchableOpacity style={styles.button} onPress={() => navigation.pop()}>
-          <Text style={styles.buttonText}>go back to map/posts screen</Text>
+          <Text style={styles.buttonText}>go back to lostandfound screen</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Posts')}>
-          <Text style={styles.buttonText}>go to posts screen</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Camera')}>
-          <Text style={styles.buttonText}>go to camera screen</Text>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('LostAndFound')}>
+          <Text style={styles.buttonText}>go to lostandfound screen</Text>
         </TouchableOpacity>
       </View>
     </>

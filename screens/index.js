@@ -8,5 +8,6 @@ import { MapScreen } from "./MapScreen";
 import { PetInfoScreen } from "./PetInfoScreen";
 import { PostsScreen } from "./PostsScreen";
 import { UserScreen } from "./UserScreen";
+import { CameraScreen } from "./CameraScreen";
 
-export { LoginScreen, SignupScreen, InitScreen, DiscoverScreen, LostAndFoundScreen, MapScreen, PetInfoScreen, PostsScreen, UserScreen, PopUpScreen };
+export { LoginScreen, SignupScreen, InitScreen, DiscoverScreen, LostAndFoundScreen, MapScreen, PetInfoScreen, PostsScreen, UserScreen, PopUpScreen, CameraScreen };
