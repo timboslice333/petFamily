@@ -3,14 +3,14 @@ import { View, Text, Image, TextInput, TouchableOpacity,StyleSheet } from 'react
 import Colours from '../constants/colors';
 
 
-export const LostAndFoundScreen = () => {
+export const LostAndFoundScreen = ({navigation}) => {
   const [petName, setPetName] = useState('');
   const [lastSeenLocation, setLastSeenLocation] = useState('');
   const [lostTime, setLostTime] = useState('');
   const [notes, setNotes] = useState('');
 
   const handlePostNow = () => {
-    // Add your logic to handle the post action here
+    navigation.navigate("Posts", {petName, lastSeenLocation, lostTime, notes});
   };
   return (
     <View style={styles.container}>
