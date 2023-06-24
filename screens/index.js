@@ -9,6 +9,7 @@ import { PetInfoScreen } from "./PetInfoScreen";
 import { PostsScreen } from "./PostsScreen";
 import { UserScreen } from "./UserScreen";
 import { CameraScreen } from "./CameraScreen";
+import { PostWritingScreen } from "./PostWritingScreen";
 
 export {
   LoginScreen,
@@ -22,4 +23,5 @@ export {
   UserScreen,
   PopUpScreen,
   CameraScreen,
+  PostWritingScreen,
 };
