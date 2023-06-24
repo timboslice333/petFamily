@@ -1,73 +1,80 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef } from "react";
 import { Text, View, TouchableOpacity, StyleSheet, Image } from "react-native";
 import Colours from "../constants/colors";
-import MapView, { Marker } from 'react-native-maps';
-import * as Location from 'expo-location';
-import { mapStyle } from '../constants/mapLabelHiding';
-import { Ionicons } from '@expo/vector-icons';
+import MapView, { Marker } from "react-native-maps";
+import * as Location from "expo-location";
+import { mapStyle } from "../constants/mapLabelHiding";
+import { AntDesign, MaterialIcons, FontAwesome } from "@expo/vector-icons";
+import { Tags } from "../components/Tags";
 
 export const MapScreen = ({ navigation }) => {
-    const [currentLocation, setCurrentLocation] = useState(null);
-    const mapRef = useRef(null);
+  const [currentLocation, setCurrentLocation] = useState(null);
+  const mapRef = useRef(null);
+  const [currentTag, setCurrentTag] = useState("All");
 
-    useEffect(() => {
-        (async () => {
-          let { status } = await Location.requestForegroundPermissionsAsync();
-          if (status !== 'granted') {
-            console.log('Permission to access location was denied');
-            return;
-          }
-    
-          let location = await Location.getCurrentPositionAsync({});
-          const { latitude, longitude } = location.coords;
-          setCurrentLocation({ latitude, longitude });
-        })();
-      }, []);
+  useEffect(() => {
+    (async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== "granted") {
+        console.log("Permission to access location was denied");
+        return;
+      }
 
-      const centerMapToPin = () => {
-        if (mapRef.current && currentLocation) {
-          mapRef.current.animateToRegion({
-            latitude: currentLocation.latitude,
-            longitude: currentLocation.longitude,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
-          });
-        }
-      };
+      let location = await Location.getCurrentPositionAsync({});
+      const { latitude, longitude } = location.coords;
+      setCurrentLocation({ latitude, longitude });
+    })();
+  }, []);
+
+  const handleTagSelectionChange = (tagName) => {
+    setCurrentTag(tagName);
+  };
+
+  const centerMapToPin = () => {
+    if (mapRef.current && currentLocation) {
+      mapRef.current.animateToRegion({
+        latitude: currentLocation.latitude,
+        longitude: currentLocation.longitude,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
+      });
+    }
+  };
 
   return (
     <View style={styles.container}>
-      <View style={styles.banner}>
-      <TouchableOpacity
-          onPress={() => navigation.navigate("Discover")}
-        >
+      <View style={{ backgroundColor: Colours.primary }}>
+        <View style={styles.banner}>
+          <TouchableOpacity onPress={() => navigation.navigate("Discover")}>
             <View style={styles.circleIcon}>
-          <Ionicons name="ios-paw" size={24} color="#ffffff" />
-        </View>
-        </TouchableOpacity>
-        <Text style={styles.title}>petSOS</Text>
-        <TouchableOpacity
-          onPress={() => navigation.navigate("User")}
-        >
+              <FontAwesome
+                name="wpexplorer"
+                size={35}
+                color={Colours.primary}
+              />
+            </View>
+          </TouchableOpacity>
+          <Text style={styles.title}>petSOS</Text>
+          <TouchableOpacity onPress={() => navigation.navigate("User")}>
             <View style={styles.circleIcon}>
-          <Ionicons name="ios-paw" size={24} color="#ffffff" />
+              <AntDesign name="user" size={35} color={Colours.primary} />
+            </View>
+          </TouchableOpacity>
         </View>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.tagContainer}>
-        <Text style={styles.tag}>Tag 1</Text>
-        <Text style={styles.tag}>Tag 2</Text>
-        <Text style={styles.tag}>Tag 3</Text>
+        <Tags
+          onSelectionChange={handleTagSelectionChange}
+          activeTag={currentTag}
+        />
       </View>
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.circleIcon} onPress={centerMapToPin}>
-        <Ionicons name="ios-paw" size={24} color="#ffffff" />
+          <MaterialIcons name="explore" size={37} color={Colours.primary} />
         </TouchableOpacity>
       </View>
       {currentLocation && (
         <MapView
           style={styles.map}
-          provider={'google'}
+          provider={"google"}
           initialRegion={{
             latitude: currentLocation.latitude,
             longitude: currentLocation.longitude,
@@ -85,64 +92,71 @@ export const MapScreen = ({ navigation }) => {
         </MapView>
       )}
       <View>
-      <TouchableOpacity
+        <TouchableOpacity
           style={styles.button}
           onPress={() => navigation.navigate("LostAndFound")}
         >
           <Text style={styles.buttonText}>Lost/Found a Pet?</Text>
         </TouchableOpacity>
-        <Text style={styles.normalText}>Search and post your pet's information here</Text>
+        <Text style={styles.normalText}>
+          Search and post your pet's information here
+        </Text>
       </View>
-      <View style = {{height:200, backgroundColor:Colours.primary}}>
-        <Image source={require('../assets/magnifyIcon.png')} 
-  style={styles.magImage}/>
-  <Image source={require('../assets/pets.png')} 
-  style={styles.petsImage}/>
+      <View style={{ height: 200, backgroundColor: Colours.primary }}>
+        <Image
+          source={require("../assets/magnifyIcon.png")}
+          style={styles.magImage}
+        />
+        <Image
+          source={require("../assets/pets.png")}
+          style={styles.petsImage}
+        />
       </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
- container: {
+  container: {
     flex: 1,
   },
   banner: {
     backgroundColor: Colours.primary,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'spaceBetween',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "spaceBetween",
     padding: 16,
     height: 100,
   },
   circleIcon: {
-    width: 30,
-    height: 30,
-    borderRadius: 15,
-    backgroundColor: '#ff0000',
-    alignItems: 'center',
-    justifyContent: 'center',
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: Colours.primary_variant,
+    alignItems: "center",
+    justifyContent: "center",
     marginTop: 30,
   },
   title: {
+    marginTop: 20,
     padding: 60,
     fontSize: 20,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    marginHorizontal: 70,
+    fontWeight: "bold",
+    textAlign: "center",
+    marginHorizontal: 60,
     color: Colours.primary_variant,
   },
   map: {
     flex: 1,
   },
   buttonContainer: {
-    position: 'absolute',
+    position: "absolute",
     bottom: 320,
     right: 16,
     zIndex: 1,
   },
   button: {
-    alignSelf: 'center',
+    alignSelf: "center",
     backgroundColor: Colours.primary_variant,
     marginTop: 15,
     paddingHorizontal: 16,
@@ -152,46 +166,33 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     marginTop: 12,
-    alignSelf: 'center',
+    alignSelf: "center",
     fontSize: 22,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     color: Colours.primary,
-    justifyContent: 'center'
+    justifyContent: "center",
   },
   normalText: {
     marginVertical: 4,
-    alignSelf: 'center',
+    alignSelf: "center",
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     color: Colours.primary_variant,
-    justifyContent: 'center'
+    justifyContent: "center",
   },
-  tagContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    paddingVertical: 10,
-  },
-  tag: {
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-    backgroundColor: '#f0f0f0',
-    borderRadius: 5,
-    marginHorizontal: 5,
-  },
-  magImage : {
-    position: 'absolute',
+  magImage: {
+    position: "absolute",
     bottom: 100,
     left: 20,
     width: 110,
     height: 90,
-
   },
-  petsImage : {
-    position: 'absolute',
+  petsImage: {
+    position: "absolute",
     bottom: 10,
     right: 20,
     width: 270,
     height: 180,
-    zIndex: 1
+    zIndex: 1,
   },
 });
