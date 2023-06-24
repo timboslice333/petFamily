@@ -4,7 +4,7 @@ export const InitScreen = ({navigation}) => {
   return (
     <>
       <View>
-        <TouchableOpacity style={[styles.button, {marginTop: 100}]} onPress={() => navigation.navigate('Login')}>
+        <TouchableOpacity style={[styles.button, {marginTop: 100}]} onPress={() => navigation.navigate('pop')}>
           <Text style={styles.buttonText}>go to login screen</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Signup')}>

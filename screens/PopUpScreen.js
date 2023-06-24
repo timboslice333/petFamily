@@ -1,14 +1,22 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
-import Colours from './colors';
+import Colours from '../colors';
+import * as Font from 'expo-font';
 
-const PopupWindow = () => {
+// // Function to load the custom font
+// const loadFont = async () => {
+//   await Font.loadAsync({
+//     'inder-regular': require('./path/to/inder-regular.ttf'),
+//   });
+// };
+
+// // Call the font loading function
+// loadFont();
+
+export const PopUpScreen = () => {
   const [inputText, setInputText] = useState('');
 
-  const handleInputChange = (text) => {
-    setInputText(text);
-  };
+  
 
   const handleButtonPress = (option) => {
     // Handle button press based on the selected option
@@ -19,12 +27,8 @@ const PopupWindow = () => {
     <View style={styles.container}>
       <View style={styles.popup}>
         <Text style={styles.title}>How can we help you today?</Text>
-        <TextInput
-          style={styles.input}
-          value={inputText}
-          onChangeText={handleInputChange}
-          placeholder="Enter your message"
-        />
+        
+
         <View style={styles.buttonsContainer}>
           <TouchableOpacity
             style={styles.button}
@@ -36,7 +40,7 @@ const PopupWindow = () => {
             style={styles.button}
             onPress={() => handleButtonPress('pressed')}
           >
-            <Text style={styles.buttonText}>I found a stray animal which seems to be a pet</Text>
+            <Text style={styles.buttonText}>I found a Stray Pet</Text>
           </TouchableOpacity>
         </View>
         <TouchableOpacity style={styles.exitButton}>
@@ -49,7 +53,7 @@ const PopupWindow = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 4,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -57,13 +61,13 @@ const styles = StyleSheet.create({
     width: 300,
     padding: 20,
     backgroundColor: Colours.primary,
-    borderRadius: 10,
+    borderRadius: 20,
     alignItems: 'center',
   },
   title: {
     fontSize: 18,
     fontWeight: 'bold',
-    marginBottom: 10,
+    marginBottom: 25,
   },
   input: {
     width: '100%',
@@ -72,7 +76,7 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
     borderRadius: 5,
     marginBottom: 10,
-    paddingLeft: 10,
+    paddingLeft: 15,
   },
   buttonsContainer: {
     width: '100%',
@@ -90,6 +94,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'white',
     fontWeight: 'bold',
+    fontFamily: 'inder-regular'
   },
   exitButton: {
     position: 'absolute',
@@ -100,12 +105,11 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: Colours.primary_variant,
+   
   },
   exitButtonText: {
     color: Colours.primary_variant,
     fontWeight: 'bold',
+    fontFamily: 'Inder'
   },
 });
-
-export default PopupWindow;
