@@ -3,8 +3,9 @@ import { Text, View, TouchableOpacity, StyleSheet } from "react-native";
 export const InitScreen = ({navigation}) => {
   return (
     <>
-      <View>
-        <TouchableOpacity style={[styles.button, {marginTop: 100}]} onPress={() => navigation.navigate('pop')}>
+      <View style = {{marginTop: 100}}>
+        <Text>InitScreen</Text>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Login')}>
           <Text style={styles.buttonText}>go to login screen</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Signup')}>
@@ -26,7 +27,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#000000",
   },
   buttonText: {
-    // color: Colors.secondary,
     fontSize: 18,
     fontWeight: "600",
     textTransform: "uppercase",
