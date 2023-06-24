@@ -1,12 +1,15 @@
 import { Text, View, TouchableOpacity, StyleSheet } from "react-native";
 
-export const LoginScreen = ({navigation}) => {
+export const PostsScreen = ({navigation}) => {
   return (
     <>
       <View style = {{marginTop: 100}}>
-        <Text>LoginScreen</Text>
+        <Text>PostsScreen</Text>
         <TouchableOpacity style={styles.button} onPress={() => navigation.pop()}>
-          <Text style={styles.buttonText}>go back to init screen</Text>
+          <Text style={styles.buttonText}>go back to discover screen</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('LostAndFound')}>
+          <Text style={styles.buttonText}>go to lostandfound screen</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Map')}>
           <Text style={styles.buttonText}>go to map screen</Text>
@@ -27,7 +30,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#000000",
   },
   buttonText: {
-    // color: Colors.secondary,
+
     fontSize: 18,
     fontWeight: "600",
     textTransform: "uppercase",

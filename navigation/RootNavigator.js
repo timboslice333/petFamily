@@ -7,6 +7,7 @@ import { AppTab } from "./AppTab";
 import { AuthenticatedUserContext } from "../providers";
 import { LoadingIndicator } from "../components";
 import { createStackNavigator } from "@react-navigation/stack";
+import { DiscoverScreen, LostAndFoundScreen, MapScreen, PetInfoScreen, PostsScreen, UserScreen } from "../screens";
 
 const RootStack = createStackNavigator();
 const RootStackScreen = () => {
@@ -53,6 +54,12 @@ const RootStackScreen = () => {
       ) : (
         <RootStack.Screen name="auth" component={AuthStack} />
       )}
+      <RootStack.Screen name="Discover" component={DiscoverScreen} />
+      <RootStack.Screen name="LostAndFound" component={LostAndFoundScreen} />
+      <RootStack.Screen name="Map" component={MapScreen} />
+      <RootStack.Screen name="PetInfo" component={PetInfoScreen} />
+      <RootStack.Screen name="Posts" component={PostsScreen} />
+      <RootStack.Screen name="User" component={UserScreen} />
     </RootStack.Navigator>
   );
 };
