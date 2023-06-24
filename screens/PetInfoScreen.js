@@ -1,11 +1,14 @@
 import { Text, View, TouchableOpacity, StyleSheet } from "react-native";
 
-export const PetInfoScreen = ({navigation}) => {
+export const PetInfoScreen = ({ navigation }) => {
   return (
     <>
-      <View style = {{marginTop: 100}}>
+      <View style={{ marginTop: 100 }}>
         <Text>PetInfoScreen</Text>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.pop()}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.pop()}
+        >
           <Text style={styles.buttonText}>go back to user screen</Text>
         </TouchableOpacity>
       </View>
@@ -28,6 +31,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "600",
     textTransform: "uppercase",
-    backgroundColor: "#ffffff"
+    backgroundColor: "#ffffff",
   },
 });

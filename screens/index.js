@@ -10,4 +10,16 @@ import { PostsScreen } from "./PostsScreen";
 import { UserScreen } from "./UserScreen";
 import { CameraScreen } from "./CameraScreen";
 
-export { LoginScreen, SignupScreen, InitScreen, DiscoverScreen, LostAndFoundScreen, MapScreen, PetInfoScreen, PostsScreen, UserScreen, PopUpScreen, CameraScreen };
+export {
+  LoginScreen,
+  SignupScreen,
+  InitScreen,
+  DiscoverScreen,
+  LostAndFoundScreen,
+  MapScreen,
+  PetInfoScreen,
+  PostsScreen,
+  UserScreen,
+  PopUpScreen,
+  CameraScreen,
+};

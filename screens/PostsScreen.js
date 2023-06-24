@@ -1,17 +1,26 @@
 import { Text, View, TouchableOpacity, StyleSheet } from "react-native";
 
-export const PostsScreen = ({navigation}) => {
+export const PostsScreen = ({ navigation }) => {
   return (
     <>
-      <View style = {{marginTop: 100}}>
+      <View style={{ marginTop: 100 }}>
         <Text>PostsScreen</Text>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.pop()}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.pop()}
+        >
           <Text style={styles.buttonText}>go back to discover screen</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('LostAndFound')}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate("LostAndFound")}
+        >
           <Text style={styles.buttonText}>go to lostandfound screen</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Map')}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate("Map")}
+        >
           <Text style={styles.buttonText}>go to map screen</Text>
         </TouchableOpacity>
       </View>
@@ -30,10 +39,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#000000",
   },
   buttonText: {
-
     fontSize: 18,
     fontWeight: "600",
     textTransform: "uppercase",
-    backgroundColor: "#ffffff"
+    backgroundColor: "#ffffff",
   },
 });
