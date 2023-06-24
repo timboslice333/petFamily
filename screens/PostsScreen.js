@@ -16,7 +16,7 @@ export const PostsScreen = ({ route,navigation }) => {
           <Text style={styles.headerText}>Your Post</Text>
         </View>
         <Image
-        source={require('/Users/timothyma/petSOS/components/IMG_1772.jpg')}
+        source={require('../components/IMG_1772.jpg')}
         style={styles.photo}
         
       />
