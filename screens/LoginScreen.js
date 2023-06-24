@@ -8,7 +8,7 @@ export const SignupScreen = ({ navigation }) => {
         <Text style={[styles.header_label]}>
           PetSOS
         </Text>
-        {/* <Image source={require('../assets/Login.jpg')} style={styles.image} /> */}
+        {/* <Image source={require('../assets/Login.jpg')} style={styles.image} />bbb */}
         <TouchableOpacity style={[styles.button]}>
           <Text style={styles.buttonText}>User Sign Up</Text>
         </TouchableOpacity>
