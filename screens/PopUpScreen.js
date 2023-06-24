@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from "react-native";
-import Colours from "../colors";
+import Colours from "../constants/colors";
 import * as Font from "expo-font";
 
 // // Function to load the custom font
