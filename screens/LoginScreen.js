@@ -33,7 +33,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#000000",
   },
   buttonText: {
-    // color: Colors.secondary,
     fontSize: 18,
     fontWeight: "600",
     textTransform: "uppercase",
