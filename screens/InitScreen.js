@@ -17,9 +17,6 @@ export const InitScreen = ({ navigation }) => {
         >
           <Text style={styles.buttonText}>go to signup screen</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('PostWriting')}>
-          <Text style={styles.buttonText}>go to post writing screen</Text>
-        </TouchableOpacity>
       </View>
     </>
   );
