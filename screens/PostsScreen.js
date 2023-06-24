@@ -1,47 +1,99 @@
-import { Text, View, TouchableOpacity, StyleSheet } from "react-native";
+import { Text, View, TouchableOpacity, Image, StyleSheet } from "react-native";
+import { useRoute } from '@react-navigation/native';
+import Colours from "../constants/colors";
 
-export const PostsScreen = ({ navigation }) => {
-  return (
-    <>
-      <View style={{ marginTop: 100 }}>
-        <Text>PostsScreen</Text>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.pop()}
-        >
-          <Text style={styles.buttonText}>go back to discover screen</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate("LostAndFound")}
-        >
-          <Text style={styles.buttonText}>go to lostandfound screen</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate("Map")}
-        >
-          <Text style={styles.buttonText}>go to map screen</Text>
-        </TouchableOpacity>
+export const PostsScreen = ({ route,navigation }) => {
+  
+  const { petName, lastSeenLocation, notes } = route.params;
+    //const petName = 'Code';
+    //const lastSeenLocation=  'City Park';
+    //const notes = 'Friendly and approachable';
+    const postDateTime = new Date().toLocaleString(); // Get current date and time
+  
+    return (
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <Text style={styles.headerText}>Your Post</Text>
+        </View>
+        <Image
+        source={require('/Users/timothyma/petSOS/components/IMG_1772.jpg')}
+        style={styles.photo}
+        
+      />
+        <View style={styles.postDateTimeSection}>
+          <Text style={styles.label}>Post Date and Time</Text>
+          <Text>{postDateTime}</Text>
+        </View>
+        <View style={styles.photoSection}>
+          {/* Add your photo component here */}
+        </View>
+        <View style={styles.textEntryContainer}>
+           <Text>{petName}</Text> 
+          <Text>{lastSeenLocation}</Text> 
+          <Text>{notes}</Text>
+       </View>
+        <View style={styles.tagsSection}>
+          <Text style={styles.label}>Tags</Text>
+          {/* Add your tags component (Lost/Found) here */}
+        </View>
       </View>
-    </>
-  );
-};
+    );
+  };
+  
+  
 
 const styles = StyleSheet.create({
-  button: {
-    marginVertical: 10,
-    borderRadius: 25,
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 15,
-    width: "100%",
-    backgroundColor: "#000000",
+  container: {
+    flex: 1,
+    backgroundColor: '#f9f9f9',
+    padding: 20,
   },
-  buttonText: {
-    fontSize: 18,
-    fontWeight: "600",
-    textTransform: "uppercase",
-    backgroundColor: "#ffffff",
+  header: {
+    alignItems: 'center',
+    marginBottom: 20,
+    marginTop:50,
+  },
+  photo: {
+    alignSelf: 'center',
+    width: 350,
+    height: 350,
+    borderWidth: 10,
+    borderColor: Colours.primary_variant,
+    
+  },
+  headerText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  postDateTimeSection: {
+    marginBottom: 20,
+  },
+  photoSection: {
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  textEntryContainer: {
+    marginBottom: 20,
+  },
+  label: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  textInput: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 8,
+    paddingVertical: 10,
+    paddingHorizontal: 16,
+    fontSize: 16,
+    backgroundColor: 'white',
+  },
+  largeInput: {
+    height: 120,
+    textAlignVertical: 'top',
+  },
+  tagsSection: {
+    marginBottom: 20,
   },
 });
