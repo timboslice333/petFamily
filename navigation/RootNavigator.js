@@ -7,7 +7,15 @@ import { AppTab } from "./AppTab";
 import { AuthenticatedUserContext } from "../providers";
 import { LoadingIndicator } from "../components";
 import { createStackNavigator } from "@react-navigation/stack";
-import { CameraScreen, DiscoverScreen, LostAndFoundScreen, MapScreen, PetInfoScreen, PostsScreen, UserScreen } from "../screens";
+import {
+  CameraScreen,
+  DiscoverScreen,
+  LostAndFoundScreen,
+  MapScreen,
+  PetInfoScreen,
+  PostsScreen,
+  UserScreen,
+} from "../screens";
 
 const RootStack = createStackNavigator();
 const RootStackScreen = () => {
