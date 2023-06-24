@@ -1,12 +1,12 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { Auth } from 'aws-amplify'
+import React, { useState, useContext, useEffect } from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { Auth } from "aws-amplify";
 
-import { AuthStack } from './AuthStack';
-import { AppTab } from './AppTab';
-import { AuthenticatedUserContext } from '../providers';
-import { LoadingIndicator } from '../components';
-import { createStackNavigator } from '@react-navigation/stack';
+import { AuthStack } from "./AuthStack";
+import { AppTab } from "./AppTab";
+import { AuthenticatedUserContext } from "../providers";
+import { LoadingIndicator } from "../components";
+import { createStackNavigator } from "@react-navigation/stack";
 
 const RootStack = createStackNavigator();
 const RootStackScreen = () => {
@@ -48,11 +48,11 @@ const RootStackScreen = () => {
         headerShown: false,
       }}
     >
-      {user ?
+      {user ? (
         <RootStack.Screen name="appTab" component={AppTab} />
-      :
+      ) : (
         <RootStack.Screen name="auth" component={AuthStack} />
-      }
+      )}
     </RootStack.Navigator>
   );
 };

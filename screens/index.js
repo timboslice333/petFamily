@@ -1,7 +1,5 @@
-import { LoginScreen } from './LoginScreen';
-import { SignupScreen } from './SignupScreen';
+import { LoginScreen } from "./LoginScreen";
+import { SignupScreen } from "./SignupScreen";
+import { InitScreen } from "./InitScreen";
 
-export {
-    LoginScreen,
-    SignupScreen,
-};
+export { LoginScreen, SignupScreen, InitScreen };
