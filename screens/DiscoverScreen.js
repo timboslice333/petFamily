@@ -12,6 +12,19 @@ export const DiscoverScreen = ({ navigation }) => {
         <View style={styles.rectangle} />
         <Text style={styles.rect_text}>Found my dog Using PetSOS!</Text>
         <Text style={styles.timer_text}>12 minutes</Text>
+        <View style={styles.icon_rect} />
+        <TouchableOpacity style={styles.Discover}>
+        <Image source={require('../assets/Discover.png')} style={styles.Discover}></Image>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.Maps}>
+        <Image source={require('../assets/map.jpeg')} style={styles.Maps}></Image>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.Learn}>
+        <Image source={require('../assets/learn.png')} style={styles.Learn}></Image>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.profile}>
+        <Image source={require('../assets/profile.png')} style={styles.profile}></Image>
+        </TouchableOpacity>
         {/* <TouchableOpacity
           style={styles.button}
           onPress={() => navigation.pop()}
@@ -70,12 +83,49 @@ const styles = StyleSheet.create({
     left: 40,
   },
   timer_text: {
-    fontsize: 16,
+    fontSize: 16,
     fontWeight: '400',
     color: '#2D384C',
     position: 'absolute',
     top: 395,
     left: 40,
+  },
+  icon_rect: {
+    backgroundColor: 'FFFFFF',
+    position: 'absolute',
+    borderRadius: 0,
+    top: 100,
+    left: 15,
+    width: 500,
+    height: 150,
+  },
+  Discover: {
+    position: 'absolute',
+    top: 410,
+    left: 5,
+    width: 80,
+    height: 80,
+  },
+  Maps: {
+    position: 'absolute',
+    top: 410,
+    left: 60,
+    width: 80,
+    height: 80,
+  },
+  Learn: {
+    position: 'absolute',
+    top: 410,
+    left: 120,
+    width: 80,
+    height: 80,
+  },
+  profile: {
+    position: 'absolute',
+    top: 410,
+    left: 170,
+    width: 80,
+    height: 80,
   },
   banner: {
     backgroundColor: Colours.primary,
