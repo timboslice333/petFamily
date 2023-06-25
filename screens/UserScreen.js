@@ -21,7 +21,6 @@ export const UserScreen = ({ navigation }) => {
         <View style={styles.menu}>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.pop()}
         >
           <Text style={styles.buttonText}>Change Your Password</Text>
         </TouchableOpacity>

@@ -9,8 +9,14 @@ import {
   ScrollView,
 } from "react-native";
 import { AntDesign } from '@expo/vector-icons';
+import { posts } from "../data/posts";
 
 export const DiscoverScreen = ({ navigation }) => {
+
+  const handlePostNav = (i) => {
+    navigation.navigate("Posts", {post: posts[i], isNew: false});
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.titleBanner}>
@@ -39,7 +45,7 @@ export const DiscoverScreen = ({ navigation }) => {
             horizontal
             contentContainerStyle={styles.missingPostsContainer}
           >
-            <TouchableOpacity style={styles.missPostContainer}>
+            <TouchableOpacity style={styles.missPostContainer} onPress={handlePostNav(0)}>
               <Image
                 source={require("../assets/istockphoto-497384624-612x612.jpg")}
                 style={styles.missPostImage}
@@ -49,7 +55,7 @@ export const DiscoverScreen = ({ navigation }) => {
                 <Text style={styles.missPostTime}>8 minutes</Text>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.missPostContainer}>
+            <TouchableOpacity style={styles.missPostContainer} onPress={handlePostNav(1)}>
               <Image
                 source={require("../assets/KOA_Nassau_2697x1517.jpg")}
                 style={styles.missPostImage}
@@ -59,7 +65,7 @@ export const DiscoverScreen = ({ navigation }) => {
                 <Text style={styles.missPostTime}>12 minutes</Text>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.missPostContainer}>
+            <TouchableOpacity style={styles.missPostContainer} onPress={handlePostNav(2)}>
               <Image
                 source={require("../assets/header_image_sleeping_place_dog.jpg")}
                 style={styles.missPostImage}
@@ -70,36 +76,36 @@ export const DiscoverScreen = ({ navigation }) => {
               </View>
             </TouchableOpacity>
           </ScrollView>
-          <Text style={styles.missing_post_text}>Posts for Missing</Text>
+          <Text style={styles.missing_post_text}>Posts for Found</Text>
             <ScrollView horizontal contentContainerStyle={styles.missingPostsContainer}>
-              <TouchableOpacity style={styles.missPostContainer}>
+              <TouchableOpacity style={styles.missPostContainer} onPress={handlePostNav(3)}>
                 <Image
                   source={require('../assets/Found1.jpeg')}
                   style={styles.missPostImage}
                 />
                 <View style={styles.missPostTextContainer}>
-                  <Text style={styles.missPostText}>Missing Dog Bell</Text>
-                  <Text style={styles.missPostTime}>8 minutes</Text>
+                  <Text style={styles.missPostText}>Found Corgi</Text>
+                  <Text style={styles.missPostTime}>30 minutes</Text>
                 </View>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.missPostContainer}>
+              <TouchableOpacity style={styles.missPostContainer} onPress={handlePostNav(4)}>
                 <Image
                   source={require("../assets/Found2.jpeg")}
                   style={styles.missPostImage}
                 />
                 <View style={styles.missPostTextContainer}>
-                  <Text style={styles.missPostText}>Candy is Missing!!!</Text>
-                  <Text style={styles.missPostTime}>12 minutes</Text>
+                  <Text style={styles.missPostText}>Golden retriever baby on the grass</Text>
+                  <Text style={styles.missPostTime}>2 hours</Text>
                 </View>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.missPostContainer}>
+              <TouchableOpacity style={styles.missPostContainer} onPress={handlePostNav(5)}>
                 <Image
                   source={require("../assets/Found3.webp")}
                   style={styles.missPostImage}
                 />
                 <View style={styles.missPostTextContainer}>
-                  <Text style={styles.missPostText}>Oreo disappeared...</Text>
-                  <Text style={styles.missPostTime}>50 minutes</Text>
+                  <Text style={styles.missPostText}>Scary dog Alert...</Text>
+                  <Text style={styles.missPostTime}>1 day</Text>
                 </View>
               </TouchableOpacity>
             </ScrollView>

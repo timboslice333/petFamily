@@ -9,7 +9,7 @@ import { Tags } from "../components/Tags";
 import CustomPinImage from '../assets/currentPos.png';
 import FoundPinImage from '../assets/pinFound.png';
 import LostPinImage from '../assets/pinLost.png';
-import { foundPins, lostPins } from "../constants/pins";
+import { foundPins, lostPins } from "../data/pins";
 
 export const MapScreen = ({ navigation }) => {
   const [currentLocation, setCurrentLocation] = useState(null);

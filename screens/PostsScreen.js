@@ -1,19 +1,30 @@
-import { Text, View, TouchableOpacity, Image, StyleSheet } from "react-native";
-import { useRoute } from '@react-navigation/native';
+import { Text, View, Image, StyleSheet } from "react-native";
 import Colours from "../constants/colors";
 
-export const PostsScreen = ({ route,navigation }) => {
+export const PostsScreen = ({ route, navigation }) => {
 
-  const { imageUri, petName, lastSeenLocation, notes } = route.params;
-    const postDateTime = new Date().toLocaleString(); // Get current date and time
-  console.log(imageUri);
+  const {isNew, post} = route.params;
+  let name;
+  let breed;
+  let location = post.location;
+  let notes = post.notes;
+  if (post.found) {
+    breed = post.breed;
+  } else {
+    name = post.name;
+  }
+  
+
+  // const { imageUri, petName, lastSeenLocation, notes } = route.params;
+    const postDateTime = isNew? new Date().toLocaleString() : post.time; // Get current date and time
     return (
       <View style={styles.container}>
         <View style={styles.header}>
-          <Text style={styles.headerText}>Your Post</Text>
+          {isNew ? <Text style={styles.headerText}>Your Post</Text> : <Text style={styles.headerText}>petSOS</Text>
+          }
         </View>
         <Image
-        source={require('../components/IMG_1772.jpg')}
+        source={post.imageUrl}
         style={styles.photo}
 
       />
