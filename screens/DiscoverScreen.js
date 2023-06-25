@@ -45,7 +45,7 @@ export const DiscoverScreen = ({ navigation }) => {
             horizontal
             contentContainerStyle={styles.missingPostsContainer}
           >
-            <TouchableOpacity style={styles.missPostContainer} onPress={handlePostNav(0)}>
+            <TouchableOpacity style={styles.missPostContainer} onPress={() => handlePostNav(0)}>
               <Image
                 source={require("../assets/istockphoto-497384624-612x612.jpg")}
                 style={styles.missPostImage}
@@ -55,7 +55,7 @@ export const DiscoverScreen = ({ navigation }) => {
                 <Text style={styles.missPostTime}>8 minutes</Text>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.missPostContainer} onPress={handlePostNav(1)}>
+            <TouchableOpacity style={styles.missPostContainer} onPress={() => handlePostNav(1)}>
               <Image
                 source={require("../assets/KOA_Nassau_2697x1517.jpg")}
                 style={styles.missPostImage}
@@ -65,7 +65,7 @@ export const DiscoverScreen = ({ navigation }) => {
                 <Text style={styles.missPostTime}>12 minutes</Text>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.missPostContainer} onPress={handlePostNav(2)}>
+            <TouchableOpacity style={styles.missPostContainer} onPress={() => handlePostNav(2)}>
               <Image
                 source={require("../assets/header_image_sleeping_place_dog.jpg")}
                 style={styles.missPostImage}
@@ -78,7 +78,7 @@ export const DiscoverScreen = ({ navigation }) => {
           </ScrollView>
           <Text style={styles.missing_post_text}>Posts for Found</Text>
             <ScrollView horizontal contentContainerStyle={styles.missingPostsContainer}>
-              <TouchableOpacity style={styles.missPostContainer} onPress={handlePostNav(3)}>
+              <TouchableOpacity style={styles.missPostContainer} onPress={() => handlePostNav(3)}>
                 <Image
                   source={require('../assets/Found1.jpeg')}
                   style={styles.missPostImage}
@@ -88,7 +88,7 @@ export const DiscoverScreen = ({ navigation }) => {
                   <Text style={styles.missPostTime}>30 minutes</Text>
                 </View>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.missPostContainer} onPress={handlePostNav(4)}>
+              <TouchableOpacity style={styles.missPostContainer} onPress={() => handlePostNav(4)}>
                 <Image
                   source={require("../assets/Found2.jpeg")}
                   style={styles.missPostImage}
@@ -98,9 +98,9 @@ export const DiscoverScreen = ({ navigation }) => {
                   <Text style={styles.missPostTime}>2 hours</Text>
                 </View>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.missPostContainer} onPress={handlePostNav(5)}>
+              <TouchableOpacity style={styles.missPostContainer} onPress={() => handlePostNav(5)}>
                 <Image
-                  source={require("../assets/Found3.webp")}
+                  source={require("../assets/Found3.jpeg")}
                   style={styles.missPostImage}
                 />
                 <View style={styles.missPostTextContainer}>

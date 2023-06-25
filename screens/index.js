@@ -1,7 +1,6 @@
 import { LoginScreen } from "./LoginScreen";
 import { SignupScreen } from "./SignupScreen";
 import { InitScreen } from "./InitScreen";
-import { PopUpScreen } from "./PopUpScreen";
 import { DiscoverScreen } from "./DiscoverScreen";
 import { LostAndFoundScreen } from "./LostAndFoundScreen";
 import { MapScreen } from "./MapScreen";
@@ -20,6 +19,5 @@ export {
   PetInfoScreen,
   PostsScreen,
   UserScreen,
-  PopUpScreen,
   CameraScreen,
 };

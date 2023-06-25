@@ -1,32 +1,5 @@
 export const posts = [
     {
-        imageUrl: '../assets/Found1.jpeg',
-        breed: 'corgi',
-        location: 'near rose garden',
-        notes: '',
-        id: 3,
-        found: true,
-        time: '06/24/23 12:30pm',
-    },
-    {
-        imageUrl: '../assets/Found2.jpeg',
-        breed: 'golden retriever',
-        location: 'Larkin Dr',
-        notes: 'such a cute baby',
-        id: 2,
-        found: true,
-        time: '06/24/23 2:30pm'
-    },
-    {
-        imageUrl: '../assets/Found3.jpeg',
-        breed: 'not sure',
-        location: 'pioneer trail',
-        notes: 'the dog looks really scary, not sure if it\'s a pet',
-        id: 1,
-        found: true,
-        time: '06/24/23 7:00pm'
-    },
-    {
         imageUrl: '../assets/istockphoto-497384624-612x612.jpg',
         name: 'Bell',
         location: 'near Eagles Dr',
@@ -52,5 +25,32 @@ export const posts = [
         id: 6,
         found: false,
         time: '06/24/23 9:30pm'
+    },
+    {
+        imageUrl: '../assets/Found1.jpeg',
+        breed: 'corgi',
+        location: 'near rose garden',
+        notes: '',
+        id: 3,
+        found: true,
+        time: '06/24/23 12:30pm',
+    },
+    {
+        imageUrl: '../assets/Found2.jpeg',
+        breed: 'golden retriever',
+        location: 'Larkin Dr',
+        notes: 'such a cute baby',
+        id: 2,
+        found: true,
+        time: '06/24/23 2:30pm'
+    },
+    {
+        imageUrl: '../assets/Found3.jpeg',
+        breed: 'not sure',
+        location: 'pioneer trail',
+        notes: 'the dog looks really scary, not sure if it\'s a pet',
+        id: 1,
+        found: true,
+        time: '06/24/23 7:00pm'
     },
 ];

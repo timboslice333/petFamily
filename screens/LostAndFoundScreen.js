@@ -4,15 +4,64 @@ import Colours from '../constants/colors';
 import { AntDesign } from '@expo/vector-icons';
 
 export const LostAndFoundScreen = ({navigation, route}) => {
-  const { imageUri } = route.params;
+  const { imageUri, found } = route.params;
   const [petName, setPetName] = useState('');
+  const [breed, setBreed] = useState('');
   const [lastSeenLocation, setLastSeenLocation] = useState('');
   const [lostTime, setLostTime] = useState('');
   const [notes, setNotes] = useState('');
 
   const handlePostNow = () => {
-    navigation.navigate("Posts", {imageUri, petName, lastSeenLocation, lostTime, notes});
+    const post = found? {
+      breed: breed,
+      location: lastSeenLocation,
+      lostTime: lostTime,
+      notes: notes,
+      imageUrl: imageUri
+    } : {
+      name: petName,
+      location: lastSeenLocation,
+      lostTime: lostTime,
+      notes: notes,
+      imageUrl: imageUri
+    }
+    navigation.navigate("Posts", {isNew: true, post: post});
   };
+
+  const handleReturnKey = () => {
+    textInputRef.current.blur();
+  };
+  const TextEntry = ({ label, value, onChangeText, multiline = false }) => {
+    return (
+      <View style={styles.textEntryContainer}>
+        <Text style={styles.label}>{label}</Text>
+        <TextInput
+          value={value}
+          onChangeText={onChangeText}
+          multiline={multiline}
+          style={styles.textInput}
+        />
+      </View>
+    );
+  };
+  
+  const TextEntryLarge = ({ label, value, onChangeText, multiline = false }) => {
+      return (
+        <View style={styles.textEntryContainer}>
+          <Text style={styles.label}>{label}</Text>
+          <TextInput
+            value={value}
+            onChangeText={onChangeText}
+            multiline={multiline}
+            style={styles.largeInput}
+            returnKeyType="done"
+            blurOnSubmit={false}
+            onSubmitEditing={handleReturnKey}
+          />
+        </View>
+      );
+    };
+
   return (
     <View style={styles.container}>
       <View style={styles.banner}>
@@ -27,10 +76,9 @@ export const LostAndFoundScreen = ({navigation, route}) => {
       <Image
         source={{ uri: imageUri }}
         style={styles.photo}
-
       />
       <View style={styles.inputContainer}>
-        <TextEntry label="Pet Name" value={petName} onChangeText={setPetName} />
+        {found? <TextEntry label="Breed" value={breed} onChangeText={setBreed} /> : <TextEntry label="Pet Name" value={petName} onChangeText={setPetName} />}
         <TextEntry label="Last Seen Location" value={lastSeenLocation} onChangeText={setLastSeenLocation} />
         <TextEntry label="Lost Time" value={lostTime} onChangeText={setLostTime} />
         <TextEntryLarge label="Notes" value={notes} onChangeText={setNotes} multiline/>
@@ -46,33 +94,7 @@ export const LostAndFoundScreen = ({navigation, route}) => {
   );
 };
 
-const TextEntry = ({ label, value, onChangeText, multiline = false }) => {
-  return (
-    <View style={styles.textEntryContainer}>
-      <Text style={styles.label}>{label}</Text>
-      <TextInput
-        value={value}
-        onChangeText={onChangeText}
-        multiline={multiline}
-        style={styles.textInput}
-      />
-    </View>
-  );
-};
 
-const TextEntryLarge = ({ label, value, onChangeText, multiline = false }) => {
-    return (
-      <View style={styles.textEntryContainer}>
-        <Text style={styles.label}>{label}</Text>
-        <TextInput
-          value={value}
-          onChangeText={onChangeText}
-          multiline={multiline}
-          style={styles.largeInput}
-        />
-      </View>
-    );
-  };
 
 const styles = StyleSheet.create({
   container: {

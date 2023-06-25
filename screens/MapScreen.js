@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Text, View, TouchableOpacity, StyleSheet, Image } from "react-native";
+import { Text, View, TouchableOpacity, StyleSheet, Image, Modal } from "react-native";
 import Colours from "../constants/colors";
 import MapView, { Marker } from "react-native-maps";
 import * as Location from "expo-location";
@@ -10,11 +10,14 @@ import CustomPinImage from '../assets/currentPos.png';
 import FoundPinImage from '../assets/pinFound.png';
 import LostPinImage from '../assets/pinLost.png';
 import { foundPins, lostPins } from "../data/pins";
+import { posts } from "../data/posts";
+import { PopUpWindow } from "../components";
 
 export const MapScreen = ({ navigation }) => {
   const [currentLocation, setCurrentLocation] = useState(null);
   const mapRef = useRef(null);
   const [currentTag, setCurrentTag] = useState("All");
+  const [isPopupVisible, setPopupVisible] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -45,6 +48,19 @@ export const MapScreen = ({ navigation }) => {
     }
   };
 
+  const navPost = (id) => {
+    navigation.navigate("Posts", {isNew: false, post: posts.find((item) => {
+      return item.id === id;
+    })})
+  };
+
+  const openPopup = () => {
+    setPopupVisible(true);
+  };
+
+  const closePopup = () => {
+    setPopupVisible(false);
+  };
   return (
     <View style={styles.container}>
       <View style={{ backgroundColor: Colours.primary }}>
@@ -100,6 +116,9 @@ export const MapScreen = ({ navigation }) => {
             key={index}
             coordinate={{ latitude: pin.latitude, longitude: pin.longitude }}
             title={pin.title}
+            onPress={() => {
+              navPost(pin.id);
+            }}
           >
             <Image source={FoundPinImage} style={styles.pinImage} />
           </Marker>
@@ -110,16 +129,24 @@ export const MapScreen = ({ navigation }) => {
             key={index}
             coordinate={{ latitude: pin.latitude, longitude: pin.longitude }}
             title={pin.title}
+            onPress={() => {
+              navPost(pin.id);
+            }}
           >
             <Image source={LostPinImage} style={styles.pinImage} />
           </Marker>
         ))}
         </MapView>
       )}
+      <Modal visible={isPopupVisible} transparent={true} animationType="fade">
+        <View style={styles.modalContainer}>
+          <PopUpWindow navigation={navigation} onClose={closePopup} />
+        </View>
+      </Modal>
       <View>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate("Camera")}
+          onPress={openPopup}
         >
           <Text style={styles.buttonText}>Lost/Found a Pet?</Text>
         </TouchableOpacity>
@@ -227,5 +254,11 @@ const styles = StyleSheet.create({
   pinImage: {
     width: 33, // Adjust the width as desired
     height: 40, // Adjust the height as desired
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
 });
