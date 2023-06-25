@@ -1,16 +1,96 @@
+import React, { useState, useContext } from 'react';
 import { Text, View, TouchableOpacity, StyleSheet, Image, TextInput } from "react-native";
 import Colours from "../constants/colors";
+import { Formik } from 'formik';
+import { Auth } from 'aws-amplify';
+import { AuthenticatedUserContext } from '../providers';
+import * as Yup from 'yup';
 
 
 export const LoginScreen = ({ navigation }) => {
+  const [errorState, setErrorState] = useState('');
+  const { user, setUser } = useContext(AuthenticatedUserContext);
+
+  const checkUser = async () => {
+    try{
+      console.log("b");
+      const authUser = await Auth.currentAuthenticatedUser({bypassCache: true});
+      setUser(authUser);
+    } catch (error){
+      setUser(null);
+    }
+  };
+
+  const handleLogin = async (values) => {
+    const { email, password } = values;
+    try {
+      const response = await Auth.signIn(email, password);
+      checkUser();
+      navigation.navigate("Map");
+
+    } catch(error) {
+      console.log(error.message);
+      setErrorState(error.message);
+    }
+  };
   return (
     <>
-      <View style={{}}>
+      <View>
       <Image source={require('../assets/image1.png')} style={styles.imageTop}></Image>
       <Image source={require('../assets/image2.png')} style={styles.imageMedium}></Image>
       <Text style={styles.text}>or connect with</Text>
       <Text style={styles.textLogin}>Log In</Text>
-      <TextInput
+      <Formik
+            initialValues={{
+              email: '',
+              password: ''
+            }}
+            validationSchema={Yup.object().shape({
+              email: Yup.string().required().email().label('Email'),
+              password: Yup.string().required().min(6).label('Password')
+            })}
+            onSubmit={values => handleLogin(values)}
+          >
+            {({
+              values,
+              touched,
+              errors,
+              handleChange,
+              handleSubmit,
+              handleBlur
+            }) => (
+              <>
+                {/* Input fields */}
+                <TextInput
+                  name='email'
+                  placeholder='Enter email'
+                  autoCapitalize='none'
+                  keyboardType='email-address'
+                  textContentType='emailAddress'
+                  autoFocus={true}
+                  value={values.email}
+                  onChangeText={handleChange('email')}
+                  onBlur={handleBlur('email')}
+                  style={styles.textInputUsername}
+                />
+                <TextInput
+                  name='password'
+                  placeholder='Enter password'
+                  autoCapitalize='none'
+                  autoCorrect={false}
+                  textContentType='password'
+                  value={values.password}
+                  onChangeText={handleChange('password')}
+                  onBlur={handleBlur('password')}
+                  style={styles.textInputPassword}
+                />
+                <TouchableOpacity style={styles.loginButton} onPress={handleSubmit}>
+                  <Text style={styles.loginButtonText}>Login</Text>
+                </TouchableOpacity>
+              </>
+            )}
+          </Formik>
+      {/* <TextInput
       style={styles.textInputUsername}
         placeholder="  Username">
       </TextInput>
@@ -24,7 +104,7 @@ export const LoginScreen = ({ navigation }) => {
           }}
         >
           <Text style={styles.loginButtonText}>Log In</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
 
       <TouchableOpacity
       style={styles.buttonFacebook}>
