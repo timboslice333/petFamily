@@ -8,7 +8,7 @@ const Stack = createStackNavigator();
 export const AuthStack = () => {
   return (
     <Stack.Navigator
-      initialRouteName="ConfirmEmail"
+      initialRouteName="Init"
       screenOptions={{ headerShown: false }}
     >
       <Stack.Screen name="Init" component={InitScreen} />
