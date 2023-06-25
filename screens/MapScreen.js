@@ -6,6 +6,7 @@ import * as Location from "expo-location";
 import { mapStyle } from "../constants/mapLabelHiding";
 import { AntDesign, MaterialIcons, FontAwesome } from "@expo/vector-icons";
 import { Tags } from "../components/Tags";
+import CustomPinImage from '../assets/imagepinS.png';
 
 export const MapScreen = ({ navigation }) => {
   const [currentLocation, setCurrentLocation] = useState(null);
