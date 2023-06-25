@@ -9,16 +9,6 @@ import {
 import Colours from "../constants/colors";
 import * as Font from "expo-font";
 
-// // Function to load the custom font
-// const loadFont = async () => {
-//   await Font.loadAsync({
-//     'inder-regular': require('./path/to/inder-regular.ttf'),
-//   });
-// };
-
-// // Call the font loading function
-// loadFont();
-
 export const PopUpScreen = () => {
   const [inputText, setInputText] = useState("");
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, Image, TextInput, TouchableOpacity,StyleSheet } from 'react-native';
 import Colours from '../constants/colors';
-
+import { AntDesign } from '@expo/vector-icons';
 
 export const LostAndFoundScreen = ({navigation}) => {
   const [petName, setPetName] = useState('');
@@ -14,6 +14,15 @@ export const LostAndFoundScreen = ({navigation}) => {
   };
   return (
     <View style={styles.container}>
+      <View style={styles.banner}>
+          <TouchableOpacity onPress={() => navigation.pop()}>
+            <View style={styles.backIcon}>
+            <AntDesign name="arrowleft" size={30} color={Colours.primary_variant} />
+            </View>
+          </TouchableOpacity>
+          <Text style={styles.title}>petSOS</Text>
+        </View>
+      <View style = {styles.form}>
       <Image
         source={require('../components/IMG_1772.jpg')}
         style={styles.photo}
@@ -30,7 +39,7 @@ export const LostAndFoundScreen = ({navigation}) => {
         <Text style={styles.buttonText}>Post Now</Text>
       </TouchableOpacity>
       </View>
-
+      </View>
 
     </View>
   );
@@ -67,63 +76,80 @@ const TextEntryLarge = ({ label, value, onChangeText, multiline = false }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'white',
+  },
+  form: {
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 30,
-    backgroundColor: Colours.primary,
+  },
+  backIcon: {
+    marginTop: 40,
   },
   photo: {
-    width: 350,
-    height: 350,
+    width: 300,
+    height: 300,
     borderWidth: 10,
-    borderColor: Colours.primary_variant,
-    marginTop: 30,
+    borderColor: Colours.primary,
+    marginTop: 20,
+    borderRadius: 30,
   },
   inputContainer: {
-    marginTop: 20,
+    marginTop: 10,
   },
   textEntryContainer: {
-    marginBottom: 20,
+    marginBottom: 10,
   },
   label: {
     fontSize: 16,
     fontWeight: 'bold',
-    marginBottom: 10,
+    marginBottom: 5,
     color:Colours.primary_variant
   },
   textInput: {
-    borderWidth: 1,
-    borderColor: '#ccc',
     borderRadius: 8,
     paddingVertical: 10,
     paddingHorizontal: 16,
     fontSize: 16,
-    backgroundColor: 'white',
+    backgroundColor: '#EEF1F3',
     width:280
   },
   largeInput: {
-    borderWidth: 1,
-    borderColor: '#ccc',
     borderRadius: 8,
     paddingVertical: 10,
-
     fontSize: 16,
-    backgroundColor: 'white',
+    backgroundColor: '#EEF1F3',
     height: 120,
     textAlignVertical: 'top',
   },
   postButton: {
-    width: 200,
-    backgroundColor: Colours.primary_variant,
-    borderRadius: 30,
+    width: 250,
+    backgroundColor: Colours.primary,
+    borderRadius: 15,
     paddingVertical: 12,
     alignItems: 'center',
-    marginTop: 10,
+    marginTop: 5,
   },
   buttonText: {
     color: 'white',
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: 'bold',
+  },
+  banner: {
+    backgroundColor: Colours.primary,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "spaceBetween",
+    padding: 16,
+    height: 100,
+  },
+  title: {
+    marginTop: 20,
+    padding: 60,
+    fontSize: 20,
+    fontWeight: "bold",
+    textAlign: "center",
+    marginHorizontal: 70,
+    color: Colours.primary_variant,
   },
 });
 
