@@ -8,10 +8,19 @@ import {
   Image,
   ScrollView,
 } from "react-native";
+import { AntDesign } from '@expo/vector-icons';
 
 export const DiscoverScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
+      <View style={styles.titleBanner}>
+          <TouchableOpacity onPress={() => navigation.pop()}>
+            <View style={styles.backIcon}>
+            <AntDesign name="arrowleft" size={30} color={Colours.primary_variant} />
+            </View>
+          </TouchableOpacity>
+          <Text style={styles.title}>petSOS</Text>
+        </View>
       <View style={styles.banner} />
       <ScrollView contentContainerStyle={styles.scrollViewContent}>
         <View style={styles.contentContainer}>
@@ -114,7 +123,7 @@ const styles = StyleSheet.create({
   },
   scrollViewContent: {
     flexGrow: 1,
-    paddingTop: "20%",
+    paddingTop: "5%",
   },
   contentContainer: {
     paddingBottom: 16,
@@ -178,5 +187,26 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     color: "#FFFFFF",
     marginTop: 4,
+  },
+  titleBanner: {
+    backgroundColor: Colours.primary,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "spaceBetween",
+    padding: 16,
+    height: 100,
+    zIndex: 1,
+  },
+  title: {
+    marginTop: 20,
+    padding: 60,
+    fontSize: 20,
+    fontWeight: "bold",
+    textAlign: "center",
+    marginHorizontal: 70,
+    color: Colours.primary_variant,
+  },
+  backIcon: {
+    marginTop: 40,
   },
 });
