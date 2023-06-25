@@ -1,62 +1,93 @@
-import { Text, View, TouchableOpacity, Image, StyleSheet } from "react-native";
-import { useRoute } from '@react-navigation/native';
+import { Text, View, Image, StyleSheet, TouchableOpacity } from "react-native";
 import Colours from "../constants/colors";
+import { AntDesign } from '@expo/vector-icons';
 
-export const PostsScreen = ({ route,navigation }) => {
-
-  const { imageUri, petName, lastSeenLocation, notes } = route.params;
+export const PostsScreen = ({ route, navigation }) => {
+  
+  const { petName, lastSeenLocation, notes } = route.params;
     const postDateTime = new Date().toLocaleString(); // Get current date and time
-  console.log(imageUri);
     return (
       <View style={styles.container}>
-        <View style={styles.header}>
-          <Text style={styles.headerText}>Your Post</Text>
+        <View style={styles.banner}>
+          <TouchableOpacity onPress={() => navigation.pop()}>
+            <View style={styles.backIcon}>
+            <AntDesign name="arrowleft" size={30} color={Colours.primary_variant} />
+            </View>
+          </TouchableOpacity>
+          <Text style={styles.title}>Your Post</Text>
         </View>
+
         <Image
         source={require('../components/IMG_1772.jpg')}
         style={styles.photo}
-
+        
       />
         <View style={styles.postDateTimeSection}>
-          <Text style={styles.label}>Post Date and Time</Text>
-          <Text>{postDateTime}</Text>
-        </View>
-        <View style={styles.photoSection}>
-          {/* Add your photo component here */}
+          <Text style={styles.time}>{postDateTime}</Text>
         </View>
         <View style={styles.textEntryContainer}>
-           <Text>{petName}</Text>
-          <Text>{lastSeenLocation}</Text>
-          <Text>{notes}</Text>
-       </View>
+        <Text style={styles.label}>Pet Name : </Text>
+        <Text style={styles.text}>{petName}</Text>
+        <Text style={styles.label}>Last Seen Location: </Text>
+        <Text style={styles.text}>{lastSeenLocation}</Text>
+        <Text style={styles.label}>Notes: </Text>
+        <Text style={styles.text}>{notes}</Text>
         <View style={styles.tagsSection}>
-          <Text style={styles.label}>Tags</Text>
-          {/* Add your tags component (Lost/Found) here */}
+          <Text style={styles.label}>Tags : Missing</Text>
         </View>
+       </View>
       </View>
     );
   };
-
-
+  
+  
 
 const styles = StyleSheet.create({
+  backgroundImage: {
+    flex: 1,
+    resizeMode: "stretch",
+    justifyContent: 'center',
+  },
   container: {
     flex: 1,
-    backgroundColor: '#f9f9f9',
-    padding: 20,
-  },
-  header: {
-    alignItems: 'center',
-    marginBottom: 20,
-    marginTop:50,
+    backgroundColor: 'white',
   },
   photo: {
     alignSelf: 'center',
-    width: 350,
-    height: 350,
+    width: 300,
+    height: 300,
     borderWidth: 10,
+    borderRadius:30,
     borderColor: Colours.primary_variant,
-
+    position: "absolute",
+    marginTop:120
+  },
+  backIcon: {
+    marginTop: 40,
+  },
+  banner: {
+    backgroundColor: Colours.primary,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "spaceBetween",
+    padding: 16,
+    height: 100,
+  },
+  title: {
+    marginTop: 20,
+    padding: 60,
+    fontSize: 20,
+    fontWeight: "bold",
+    textAlign: "center",
+    marginHorizontal: 60,
+    color: Colours.primary_variant,
+  },
+  text:{
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginBottom: 10,
+    marginLeft:30,
+    color: Colours.primary_variant
   },
   headerText: {
     fontSize: 20,
@@ -64,24 +95,32 @@ const styles = StyleSheet.create({
   },
   postDateTimeSection: {
     marginBottom: 20,
+    alignSelf: 'center',
+    marginTop:400
   },
   photoSection: {
     alignItems: 'center',
     marginBottom: 20,
   },
   textEntryContainer: {
-    marginBottom: 20,
+    marginBottom: 30,
   },
   label: {
     fontSize: 16,
     fontWeight: 'bold',
     marginBottom: 10,
+    marginLeft:30
+  },
+  time: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginBottom: 10,
   },
   textInput: {
-    borderWidth: 1,
+    borderWidth: 6,
     borderColor: '#ccc',
     borderRadius: 8,
-    paddingVertical: 10,
+    paddingVertical: 20,
     paddingHorizontal: 16,
     fontSize: 16,
     backgroundColor: 'white',
@@ -91,6 +130,9 @@ const styles = StyleSheet.create({
     textAlignVertical: 'top',
   },
   tagsSection: {
-    marginBottom: 20,
+    marginBottom: 50,
+  },
+  bottomPhoto: {
+    
   },
 });
