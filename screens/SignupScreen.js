@@ -1,32 +1,101 @@
+import React, { useState} from 'react';
 import { Text, View, TouchableOpacity, StyleSheet, Image, TextInput } from "react-native";
 import Colours from "../constants/colors";
+import { Formik } from 'formik';
+import { Auth } from 'aws-amplify';
+import * as Yup from 'yup';
 
 export const SignupScreen = ({navigation}) => {
+  const [errorState, setErrorState] = useState('');
+
+  const handleSignup = async values => {
+    const { email, password } = values;
+    const username = email;
+    try {
+      await Auth.signUp({
+        username,
+        password,
+        attributes: {
+          email: email
+      }
+      });
+      navigation.navigate("ConfirmEmail");
+    } catch (error) {
+      console.log(error.message);
+      setErrorState(error.message);
+    }
+  };
     return (
       <>
-        <View style={{}}>
+        <View>
         <Image source={require('../assets/image1.png')} style={styles.imageTop}></Image>
         <Text style={styles.text}>or connect with</Text>
         <Text style={styles.textSignUp}>Sign Up</Text>
-        <TextInput
-        style={styles.textInputUsername}
-          placeholder="  Username">
-        </TextInput>
-        <TextInput
-        style = {styles.textInputPassword}
-        placeholder= "  Password">
-        </TextInput>
-        <TextInput
-        style = {styles.textInputConfirmPassword}
-        placeholder= "  Confirm Password">
-        </TextInput>
-        <TouchableOpacity
-            style={styles.signupButton} onPress={() => {
-              navigation.navigate("Map");
-            }}
-          >
-            <Text style={styles.signupButtonText}>Sign Up</Text>
-        </TouchableOpacity>
+        <Formik
+          initialValues={{
+            email: '',
+            password: '',
+            confirmPassword: ''
+          }}
+          validationSchema={Yup.object().shape({
+            email: Yup.string().required().email().label('Email'),
+            password: Yup.string().required().min(6).label('Password'),
+            confirmPassword: Yup.string()
+              .oneOf([Yup.ref('password')], 'Confirm Password must match password.')
+              .required('Confirm Password is required.')
+          })}
+          onSubmit={values => handleSignup(values)}
+        >
+          {({
+            values,
+            touched,
+            errors,
+            handleChange,
+            handleSubmit,
+            handleBlur
+          }) => (
+            <>
+              {/* Input fields */}
+              <TextInput
+                name='email'
+                placeholder='Enter email'
+                autoCapitalize='none'
+                keyboardType='email-address'
+                textContentType='emailAddress'
+                autoFocus={true}
+                value={values.email}
+                onChangeText={handleChange('email')}
+                onBlur={handleBlur('email')}
+                style={styles.textInputUsername}
+              />
+              <TextInput
+                name='password'
+                placeholder='Enter password'
+                autoCapitalize='none'
+                autoCorrect={false}
+                textContentType='newPassword'
+                value={values.password}
+                onChangeText={handleChange('password')}
+                onBlur={handleBlur('password')}
+                style={styles.textInputPassword}
+              />
+              <TextInput
+                name='confirmPassword'
+                placeholder='Enter password'
+                autoCapitalize='none'
+                autoCorrect={false}
+                textContentType='password'
+                value={values.confirmPassword}
+                onChangeText={handleChange('confirmPassword')}
+                onBlur={handleBlur('confirmPassword')}
+                style={styles.textInputConfirmPassword}
+              />
+              <TouchableOpacity style={styles.signupButton} onPress={handleSubmit}>
+                <Text style={styles.signupButtonText}>Signup</Text>
+              </TouchableOpacity>
+            </>
+          )}
+        </Formik>
   
         <TouchableOpacity
         style={styles.buttonFacebook}>
@@ -37,20 +106,6 @@ export const SignupScreen = ({navigation}) => {
         style={styles.buttonTwitter}>
           <Text style={styles.buttonTextTwitter}>Twitter</Text>
         </TouchableOpacity>
-          {/*
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => navigation.pop()}
-          >
-            <Text style={styles.buttonText}>go back to init screen</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => navigation.navigate("Map")}
-          >
-            <Text style={styles.buttonText}>go to map screen</Text>
-          </TouchableOpacity>
-           */}
         </View>
       </>
     );
