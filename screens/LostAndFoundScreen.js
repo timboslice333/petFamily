@@ -28,39 +28,6 @@ export const LostAndFoundScreen = ({navigation, route}) => {
     navigation.navigate("Posts", {isNew: true, post: post});
   };
 
-  const handleReturnKey = () => {
-    textInputRef.current.blur();
-  };
-  const TextEntry = ({ label, value, onChangeText, multiline = false }) => {
-    return (
-      <View style={styles.textEntryContainer}>
-        <Text style={styles.label}>{label}</Text>
-        <TextInput
-          value={value}
-          onChangeText={onChangeText}
-          multiline={multiline}
-          style={styles.textInput}
-        />
-      </View>
-    );
-  };
-  
-  const TextEntryLarge = ({ label, value, onChangeText, multiline = false }) => {
-      return (
-        <View style={styles.textEntryContainer}>
-          <Text style={styles.label}>{label}</Text>
-          <TextInput
-            value={value}
-            onChangeText={onChangeText}
-            multiline={multiline}
-            style={styles.largeInput}
-            returnKeyType="done"
-            blurOnSubmit={false}
-            onSubmitEditing={handleReturnKey}
-          />
-        </View>
-      );
-    };
 
   return (
     <View style={styles.container}>
@@ -94,7 +61,33 @@ export const LostAndFoundScreen = ({navigation, route}) => {
   );
 };
 
+const TextEntry = ({ label, value, onChangeText, multiline = false }) => {
+  return (
+    <View style={styles.textEntryContainer}>
+      <Text style={styles.label}>{label}</Text>
+      <TextInput
+        value={value}
+        onChangeText={onChangeText}
+        multiline={multiline}
+        style={styles.textInput}
+      />
+    </View>
+  );
+};
 
+const TextEntryLarge = ({ label, value, onChangeText, multiline = false }) => {
+    return (
+      <View style={styles.textEntryContainer}>
+        <Text style={styles.label}>{label}</Text>
+        <TextInput
+          value={value}
+          onChangeText={onChangeText}
+          multiline={multiline}
+          style={styles.largeInput}
+        />
+      </View>
+    );
+  };
 
 const styles = StyleSheet.create({
   container: {
