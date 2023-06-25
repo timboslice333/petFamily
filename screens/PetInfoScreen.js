@@ -101,6 +101,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
   },
+  backIcon: {
+    marginTop: 40,
+  },
   form: {
     justifyContent: 'center',
     alignItems: 'center',
