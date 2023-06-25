@@ -35,6 +35,13 @@ export const PostsScreen = ({ route, navigation }) => {
         <View style={styles.tagsSection}>
           <Text style={styles.label}>Tags : Missing</Text>
         </View>
+        <View style={{alignItems: 'center'}}>
+        <TouchableOpacity style={styles.button} onPress={() => {
+          navigation.navigate("Map");
+        }}>
+          <Text style={styles.buttonText}>Done</Text>
+        </TouchableOpacity>
+        </View>
        </View>
       </View>
     );
@@ -132,7 +139,16 @@ const styles = StyleSheet.create({
   tagsSection: {
     marginBottom: 50,
   },
-  bottomPhoto: {
-    
+  button: {
+    width: '40%',
+    backgroundColor: Colours.primary,
+    borderRadius: 15,
+    height: 40,
+    alignItems: 'center',
   },
+  buttonText: {
+    marginTop: 8,
+    color: Colours.primary_variant,
+    fontSize: 20,
+  }
 });
