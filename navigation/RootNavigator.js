@@ -59,7 +59,7 @@ const RootStackScreen = () => {
       {user ? (
         <RootStack.Screen name="Map" component={MapScreen} />
       ) : (
-        <RootStack.Screen name="auth" component={AuthStack} />
+        <RootStack.Screen name="Auth" component={AuthStack} />
       )}
       <RootStack.Screen name="Discover" component={DiscoverScreen} />
       <RootStack.Screen name="LostAndFound" component={LostAndFoundScreen} />
