@@ -1,4 +1,4 @@
-# petFamily
+# petSOS
 Inspiration
 The primary inspiration behind the app is to provide a platform for pet owners who have lost their beloved pets. It aims to leverage the power of community and real-time updates to increase the chances of finding missing pets. By enabling users to post real-time alerts and display them on an interactive map, the app facilitates quick and widespread dissemination of information, increasing the likelihood of finding lost pets. In the meantime, our app PetSOS seeks to create a sense of community among pet owners and animal lovers. It encourages users to come together, support each other, and actively participate in the search for missing pets. By notifying people in the vicinity of a missing pet, PetSOS promotes local engagement and collaboration, fostering a collective effort to reunite pets with their owners.
 
@@ -19,6 +19,6 @@ Developing an app from scratch within a limited timeframe presented various chal
 
 What's next for petSOS
 In the next steps, we will focus on the following aspects to improve our product:
-1.Community Engagement: We need to increase community engagement by promoting social sharing and hosting community challenges. This can include challenges to share a certain number of missing pet alerts, volunteer for search parties, or contribute valuable information.
-2.External System Integration: We want to focus on working with other existing larger companies and services to contribute the most to our app.
+1.Fully implement some features that were hard coded due to lack of time to complete.
+2.External System Integration: We want to focus on working with existing databases to store and retrieve data for the posts.
 3.User Privacy: We understand our app will have to get access of user's locations and other privacies. However, we will continue to work on user privacy to guarantee privacies stay private. We would further ensure that user data, including personal information and location data, is securely stored on servers or databases. Implement encryption and proper access controls to protect sensitive information from unauthorized access.
