@@ -3,14 +3,15 @@ import { View, Text, Image, TextInput, TouchableOpacity,StyleSheet } from 'react
 import Colours from '../constants/colors';
 import { AntDesign } from '@expo/vector-icons';
 
-export const LostAndFoundScreen = ({navigation}) => {
+export const LostAndFoundScreen = ({navigation, route}) => {
+  const { imageUri } = route.params;
   const [petName, setPetName] = useState('');
   const [lastSeenLocation, setLastSeenLocation] = useState('');
   const [lostTime, setLostTime] = useState('');
   const [notes, setNotes] = useState('');
 
   const handlePostNow = () => {
-    navigation.navigate("Posts", {petName, lastSeenLocation, lostTime, notes});
+    navigation.navigate("Posts", {imageUri, petName, lastSeenLocation, lostTime, notes});
   };
   return (
     <View style={styles.container}>
@@ -24,7 +25,7 @@ export const LostAndFoundScreen = ({navigation}) => {
         </View>
       <View style = {styles.form}>
       <Image
-        source={require('../components/IMG_1772.jpg')}
+        source={{ uri: imageUri }}
         style={styles.photo}
 
       />
