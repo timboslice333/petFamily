@@ -6,6 +6,10 @@ import * as Location from "expo-location";
 import { mapStyle } from "../constants/mapLabelHiding";
 import { AntDesign, MaterialIcons, FontAwesome } from "@expo/vector-icons";
 import { Tags } from "../components/Tags";
+import CustomPinImage from '../assets/currentPos.png';
+import FoundPinImage from '../assets/pinFound.png';
+import LostPinImage from '../assets/pinLost.png';
+import { foundPins, lostPins } from "../constants/pins";
 
 export const MapScreen = ({ navigation }) => {
   const [currentLocation, setCurrentLocation] = useState(null);
@@ -88,7 +92,28 @@ export const MapScreen = ({ navigation }) => {
             coordinate={currentLocation}
             title="Your Location"
             description="This is your current location"
-          />
+          >
+             <Image source={CustomPinImage} style={styles.pin} />
+            </Marker>
+            {(currentTag === "all" || currentTag === "found pets") && foundPins.map((pin, index) => (
+          <Marker
+            key={index}
+            coordinate={{ latitude: pin.latitude, longitude: pin.longitude }}
+            title={pin.title}
+          >
+            <Image source={FoundPinImage} style={styles.pinImage} />
+          </Marker>
+        ))}
+            
+        {(currentTag === "all" || currentTag === "lost pets") && lostPins.map((pin, index) => (
+          <Marker
+            key={index}
+            coordinate={{ latitude: pin.latitude, longitude: pin.longitude }}
+            title={pin.title}
+          >
+            <Image source={LostPinImage} style={styles.pinImage} />
+          </Marker>
+        ))}
         </MapView>
       )}
       <View>
@@ -194,5 +219,13 @@ const styles = StyleSheet.create({
     width: 270,
     height: 180,
     zIndex: 1,
+  },
+  pin: {
+    width: 15, // Adjust the width as desired
+    height: 15, // Adjust the height as desired
+  },
+  pinImage: {
+    width: 33, // Adjust the width as desired
+    height: 40, // Adjust the height as desired
   },
 });

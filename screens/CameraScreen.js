@@ -99,8 +99,12 @@ export const CameraScreen = ({}) => {
       });
 
       if (!result.canceled) {
-        setImage(result.assets[0].uri);
-        saveImage();
+        try {
+          setImage(result.assets[0].uri);
+          Promise.all([saveImage(), navigateToNextPage(result.assets[0].uri)]);
+        } catch (e) {
+          console.log(e);
+        }
       }
     } else {
       alert('does not have photo permission');
