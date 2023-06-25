@@ -1,5 +1,5 @@
 import { LoginScreen } from "./LoginScreen";
-import { SignupScreen } from "./SignupScreen";
+import { SignupScreen } from "./LogonScreen";
 import { InitScreen } from "./InitScreen";
 import { PopUpScreen } from "./PopUpScreen";
 import { DiscoverScreen } from "./DiscoverScreen";
