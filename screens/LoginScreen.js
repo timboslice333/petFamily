@@ -64,10 +64,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   image: {
-    width: 500,
+    width: 450,
     height: 500,
     justifyContent: 'center',
     alignItems: 'center',
+    borderRadius:30
   },
   signUp_Login_button: {
     marginTop: 10,
