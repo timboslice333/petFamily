@@ -1,10 +1,19 @@
 import { Text, View, TouchableOpacity, StyleSheet, Image } from "react-native";
 import Colours from "../constants/colors";
+import { AntDesign } from "@expo/vector-icons";
+
 export const UserScreen = ({ navigation }) => {
   return (
     <>
       <View style={[styles.container,  {backgroundColor: Colours.secondary}]}>
-        <View style={styles.banner}></View>
+      <View style={styles.banner}>
+          <TouchableOpacity onPress={() => navigation.pop()}>
+            <View style={styles.backIcon}>
+            <AntDesign name="arrowleft" size={30} color={Colours.primary_variant} />
+            </View>
+          </TouchableOpacity>
+          <Text style={styles.title}>petSOS</Text>
+        </View>
         <View style={styles.otherContainer}>
         <Text style={styles.text}>Hello, Timothy!</Text>
         <Image source={require('../assets/pets.png')} style={styles.profileImage}></Image>
@@ -14,7 +23,7 @@ export const UserScreen = ({ navigation }) => {
           style={styles.button}
           onPress={() => navigation.pop()}
         >
-          <Text style={styles.buttonText}>Back to Map</Text>
+          <Text style={styles.buttonText}>Change Your Password</Text>
         </TouchableOpacity>
         {/* edit your pet information */}
         <TouchableOpacity
@@ -66,8 +75,28 @@ const styles = StyleSheet.create({
     flex: 1,
     
   },
+  backIcon: {
+    marginTop: 40,
+  },
+  banner: {
+    backgroundColor: Colours.primary,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "spaceBetween",
+    padding: 16,
+    height: 120,
+  },
+  title: {
+    marginTop: 20,
+    padding: 60,
+    fontSize: 20,
+    fontWeight: "bold",
+    textAlign: "center",
+    marginHorizontal: 60,
+    color: Colours.primary_variant,
+  },
   otherContainer: {
-    marginTop: 50,
+    marginTop: 20,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -121,13 +150,5 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '500',
     color: '#FFFFFF',
-  },
-  banner: {
-    backgroundColor: Colours.primary,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "spaceBetween",
-    padding: 16,
-    height: 100,
   },
 });

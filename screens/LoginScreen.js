@@ -7,6 +7,7 @@ export const LoginScreen = ({ navigation }) => {
     <>
       <View style={{}}>
       <Image source={require('../assets/image1.png')} style={styles.imageTop}></Image>
+      <Image source={require('../assets/image2.png')} style={styles.imageMedium}></Image>
       <Text style={styles.text}>or connect with</Text>
       <Text style={styles.textLogin}>Log In</Text>
       <TextInput
@@ -95,6 +96,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: 450,
     height: 650,
+    position: 'absolute',
+    zIndex: 1,
+  },
+  imageMedium: {
+    alignSelf: 'center',
+    width: '100%',
+    height: 120,
+    marginTop:540
   },
   text: {
     marginTop: 20,
@@ -102,6 +111,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '500',
     color: Colours.primary_variant,
+    zIndex: 2,
   },
   textLogin: {
     alignSelf: 'center',
@@ -109,6 +119,8 @@ const styles = StyleSheet.create({
     top: 150,
     fontSize: 36,
     fontWeight: '500',
+    zIndex: 2,
+    color: Colours.primary_variant,
   },
   textInputUsername: {
     position: 'absolute',
@@ -118,6 +130,7 @@ const styles = StyleSheet.create({
     width: 250,
     borderRadius: 20,
     backgroundColor: 'white',
+    zIndex: 2,
   },
   textInputPassword: {
     position: 'absolute',
@@ -127,6 +140,7 @@ const styles = StyleSheet.create({
     width: 250,
     borderRadius: 20,
     backgroundColor: 'white',
+    zIndex: 2,
   },
   loginButton: {
     borderRadius: 40,
@@ -137,6 +151,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#2D384C',
     position: 'absolute',
     top: 500,
+    zIndex:2,
   },
   loginButtonText: {
     fontSize: 16,
