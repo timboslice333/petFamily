@@ -1,8 +1,21 @@
 import { Text, View, TouchableOpacity, StyleSheet, Image } from "react-native";
 import Colours from "../constants/colors";
 import { AntDesign } from "@expo/vector-icons";
+import { Auth } from 'aws-amplify';
 
 export const UserScreen = ({ navigation }) => {
+  const handleLogout = async () => {
+    try {
+      await Auth.signOut();
+    } catch (error) {
+      console.log("log out error: ", error)
+    }
+  };
+
+  const logOut = () => {
+    alert("Logging Out");
+    handleLogout();
+  }
   return (
     <>
       <View style={[styles.container,  {backgroundColor: Colours.secondary}]}>
@@ -57,7 +70,7 @@ export const UserScreen = ({ navigation }) => {
         </TouchableOpacity>
         {/* help */}
         <TouchableOpacity
-          style={styles.logoutButton}
+          style={styles.logoutButton} onPress={logOut}
         >
           <Text style={styles.logoutButtonText}>Log Out</Text>
         </TouchableOpacity>

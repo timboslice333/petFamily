@@ -26,8 +26,6 @@ export const LoginScreen = ({ navigation }) => {
     try {
       const response = await Auth.signIn(email, password);
       checkUser();
-      navigation.navigate("Map");
-
     } catch(error) {
       console.log(error.message);
       setErrorState(error.message);
