@@ -94,7 +94,7 @@ export const MapScreen = ({ navigation }) => {
       <View>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate("LostAndFound")}
+          onPress={() => navigation.navigate("Camera")}
         >
           <Text style={styles.buttonText}>Lost/Found a Pet?</Text>
         </TouchableOpacity>

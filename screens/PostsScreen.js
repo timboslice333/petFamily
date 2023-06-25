@@ -3,13 +3,10 @@ import { useRoute } from '@react-navigation/native';
 import Colours from "../constants/colors";
 
 export const PostsScreen = ({ route,navigation }) => {
-  
-  const { petName, lastSeenLocation, notes } = route.params;
-    //const petName = 'Code';
-    //const lastSeenLocation=  'City Park';
-    //const notes = 'Friendly and approachable';
+
+  const { imageUri, petName, lastSeenLocation, notes } = route.params;
     const postDateTime = new Date().toLocaleString(); // Get current date and time
-  
+  console.log(imageUri);
     return (
       <View style={styles.container}>
         <View style={styles.header}>
@@ -18,7 +15,7 @@ export const PostsScreen = ({ route,navigation }) => {
         <Image
         source={require('../components/IMG_1772.jpg')}
         style={styles.photo}
-        
+
       />
         <View style={styles.postDateTimeSection}>
           <Text style={styles.label}>Post Date and Time</Text>
@@ -28,8 +25,8 @@ export const PostsScreen = ({ route,navigation }) => {
           {/* Add your photo component here */}
         </View>
         <View style={styles.textEntryContainer}>
-           <Text>{petName}</Text> 
-          <Text>{lastSeenLocation}</Text> 
+           <Text>{petName}</Text>
+          <Text>{lastSeenLocation}</Text>
           <Text>{notes}</Text>
        </View>
         <View style={styles.tagsSection}>
@@ -39,8 +36,8 @@ export const PostsScreen = ({ route,navigation }) => {
       </View>
     );
   };
-  
-  
+
+
 
 const styles = StyleSheet.create({
   container: {
@@ -59,7 +56,7 @@ const styles = StyleSheet.create({
     height: 350,
     borderWidth: 10,
     borderColor: Colours.primary_variant,
-    
+
   },
   headerText: {
     fontSize: 20,
