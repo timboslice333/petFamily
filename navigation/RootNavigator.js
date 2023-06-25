@@ -3,7 +3,6 @@ import { NavigationContainer } from "@react-navigation/native";
 import { Auth } from "aws-amplify";
 
 import { AuthStack } from "./AuthStack";
-import { AppTab } from "./AppTab";
 import { AuthenticatedUserContext } from "../providers";
 import { LoadingIndicator } from "../components";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -58,13 +57,12 @@ const RootStackScreen = () => {
       }}
     >
       {user ? (
-        <RootStack.Screen name="appTab" component={AppTab} />
+        <RootStack.Screen name="Map" component={MapScreen} />
       ) : (
         <RootStack.Screen name="auth" component={AuthStack} />
       )}
       <RootStack.Screen name="Discover" component={DiscoverScreen} />
       <RootStack.Screen name="LostAndFound" component={LostAndFoundScreen} />
-      <RootStack.Screen name="Map" component={MapScreen} />
       <RootStack.Screen name="PetInfo" component={PetInfoScreen} />
       <RootStack.Screen name="Posts" component={PostsScreen} />
       <RootStack.Screen name="User" component={UserScreen} />
