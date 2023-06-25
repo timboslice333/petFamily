@@ -1,39 +1,41 @@
-import { Text, View, TouchableOpacity, StyleSheet, Image } from "react-native";
+import { Text, View, TouchableOpacity, StyleSheet, Image, TextInput } from "react-native";
+import Colours from "../constants/colors";
+
 
 export const LoginScreen = ({ navigation }) => {
   return (
     <>
-      <View style={[styles.container, { backgroundColor: '#FDBD4E' }]}>
-        <Text></Text>
-        <Text></Text>
-        <Text>LoginScreen</Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text style={[styles.header_label]}>PepSOS</Text>
-        <Text style={[styles.header_label]}></Text>
-        <Text style={[styles.header_label]}></Text>
-        <Image source={require('../assets/Login.jpg')} style={styles.image}></Image>
-        <TouchableOpacity
-          style={styles.signUp_Login_button}
+      <View style={{}}>
+      <Image source={require('../assets/image1.png')} style={styles.imageTop}></Image>
+      <Text style={styles.text}>or connect with</Text>
+      <Text style={styles.textLogin}>Log In</Text>
+      <TextInput
+      style={styles.textInputUsername}
+        placeholder="  Username">
+      </TextInput>
+      <TextInput
+      style = {styles.textInputPassword}
+      placeholder= "  Password">
+      </TextInput>
+      <TouchableOpacity
+          style={styles.loginButton} onPress={() => {
+            navigation.navigate("Map");
+          }}
         >
-          <Text style={styles.signUp_Login_text}>User Sign Up</Text>
-        </TouchableOpacity>
+          <Text style={styles.loginButtonText}>Log In</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+      style={styles.buttonFacebook}>
+        <Text style={styles.buttonTextFacebook}>FaceBook</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+      style={styles.buttonTwitter}>
+        <Text style={styles.buttonTextTwitter}>Twitter</Text>
+      </TouchableOpacity>
+        {/*
         <TouchableOpacity
-          style={styles.signUp_Login_button}
-        >
-          <Text style={styles.signUp_Login_text}>User Login</Text>
-        </TouchableOpacity>
-        <Text></Text>
-        <Text style={[styles.subscrip_text]}>No credit card required for the trial, 
-        cancel at any time before the renew for $4.99 / month subscription fee to avoid getting charged.
-        </Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text style={[styles.web_text]}>Need more help? Contact Support</Text>
-        {/* <TouchableOpacity
           style={styles.button}
           onPress={() => navigation.pop()}
         >
@@ -44,71 +46,101 @@ export const LoginScreen = ({ navigation }) => {
           onPress={() => navigation.navigate("Map")}
         >
           <Text style={styles.buttonText}>go to map screen</Text>
-        </TouchableOpacity> */}
+        </TouchableOpacity>
+         */}
       </View>
     </>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: 0,
+  buttonFacebook: {
+    marginVertical: 50,
+    borderRadius: 25,
+    justifyContent: 'center',
     alignItems: 'center',
+    padding: 15,
+    width: "40%",
+    backgroundColor: '#0165E1',
+    position: 'absolute',
+    left: 30,
+    top: 670,
   },
-  header_label: {
-    fontSize: 36,
-    fontWeight: 500,
-    marginTop: 0,
-    marginLeft: 0,
-    textAlign: 'center',
+  buttonTextFacebook: {
+    // color: Colors.secondary,
+    fontSize: 18,
+    fontWeight: "600",
+    color: 'white',
   },
-  image: {
+  buttonTwitter: {
+    marginVertical: 50,
+    borderRadius: 25,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 15,
+    width: "40%",
+    backgroundColor: '#1DA1F2',
+    position: 'absolute',
+    right: 30,
+    top: 670,
+  },
+  buttonTextTwitter: {
+    // color: Colors.secondary,
+    fontSize: 18,
+    fontWeight: "600",
+    color: 'white',
+  },
+  imageTop: {
+    alignItems: 'center',
+    justifyContent: 'center',
     width: 450,
-    height: 500,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius:30
+    height: 650,
   },
-  signUp_Login_button: {
-    marginTop: 10,
-    marginVertical: 5,
+  text: {
+    marginTop: 20,
+    alignSelf: 'center',
+    fontSize: 18,
+    fontWeight: '500',
+    color: Colours.primary_variant,
+  },
+  textLogin: {
+    alignSelf: 'center',
+    position: 'absolute',
+    top: 150,
+    fontSize: 36,
+    fontWeight: '500',
+  },
+  textInputUsername: {
+    position: 'absolute',
+    top: 300,
+    alignSelf: 'center',
+    height: 40,
+    width: 250,
+    borderRadius: 20,
+    backgroundColor: 'white',
+  },
+  textInputPassword: {
+    position: 'absolute',
+    top: 370,
+    alignSelf: 'center',
+    height: 40,
+    width: 250,
+    borderRadius: 20,
+    backgroundColor: 'white',
+  },
+  loginButton: {
     borderRadius: 40,
-    justifyContent: 'center',
+    alignSelf: 'center',
     alignItems: 'center',
     padding: 10,
     width: '60%',
     backgroundColor: '#2D384C',
+    position: 'absolute',
+    top: 500,
   },
-  signUp_Login_text: {
-    fontSize: 18,
+  loginButtonText: {
+    fontSize: 16,
     fontWeight: '500',
     color: '#FFFFFF',
-  },
-  web_text: {
-    fontSize: 12,
-    fontWeight: '400',
-    color: '#000000',
-    textDecorationLine: 'underline',
-  },
-  subscrip_text: {
-    textAlign: 'center',
-    fontSize: 12,
-    fontWeight: '400',
-  },
-  button: {
-    marginVertical: 10,
-    borderRadius: 40,
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 15,
-    width: "100%",
-    backgroundColor: "#000000",
-  },
-  buttonText: {
-    fontSize: 18,
-    fontWeight: "600",
-    textTransform: "uppercase",
-    backgroundColor: "#ffffff",
   },
 });
