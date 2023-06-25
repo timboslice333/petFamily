@@ -2,43 +2,41 @@ import React, { useState } from "react";
 import {
   View,
   Text,
-  TextInput,
   TouchableOpacity,
   StyleSheet,
 } from "react-native";
 import Colours from "../constants/colors";
-import * as Font from "expo-font";
 
-export const PopUpScreen = () => {
-  const [inputText, setInputText] = useState("");
-
-  const handleButtonPress = (option) => {
-    // Handle button press based on the selected option
-    console.log(`Selected option: ${option}`);
-  };
+export const PopUpWindow = ({ navigation, onClose }) => {
 
   return (
     <View style={styles.container}>
       <View style={styles.popup}>
         <Text style={styles.title}>How can we help you today?</Text>
+        <TouchableOpacity onPress={onClose}>
+        <Text style={styles.closeButtonText}>X</Text>
+      </TouchableOpacity>
 
         <View style={styles.buttonsContainer}>
           <TouchableOpacity
             style={styles.button}
-            onPress={() => handleButtonPress("pressed")}
+            onPress={() => {
+              navigation.navigate('Camera', {found: false});
+              onClose();
+            }}
           >
             <Text style={styles.buttonText}>My Pet is Missing</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.button}
-            onPress={() => handleButtonPress("pressed")}
+            onPress={() => {
+              navigation.navigate('Camera', {found: true});
+              onClose();
+            }}
           >
             <Text style={styles.buttonText}>I found a Stray Pet</Text>
           </TouchableOpacity>
         </View>
-        <TouchableOpacity style={styles.exitButton}>
-          <Text style={styles.exitButtonText}>X</Text>
-        </TouchableOpacity>
       </View>
     </View>
   );
@@ -58,18 +56,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   title: {
+    color: Colours.primary_variant,
     fontSize: 18,
     fontWeight: "bold",
     marginBottom: 25,
-  },
-  input: {
-    width: "100%",
-    height: 40,
-    borderWidth: 1,
-    borderColor: "#ccc",
-    borderRadius: 5,
-    marginBottom: 10,
-    paddingLeft: 15,
   },
   buttonsContainer: {
     width: "100%",
@@ -87,21 +77,12 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "white",
     fontWeight: "bold",
-    fontFamily: "inder-regular",
   },
-  exitButton: {
-    position: "absolute",
-    top: 5,
-    right: 5,
-    width: 20,
-    height: 20,
-    borderRadius: 10,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  exitButtonText: {
+  closeButtonText: {
     color: Colours.primary_variant,
-    fontWeight: "bold",
-    fontFamily: "Inder",
+    fontSize: 18,
+    position: 'absolute',
+    right: -140,
+    top: -60,
   },
 });

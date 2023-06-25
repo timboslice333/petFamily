@@ -19,7 +19,8 @@ import Colours from '../constants/colors';
 import { AntDesign } from '@expo/vector-icons';
 
 
-export const CameraScreen = ({}) => {
+export const CameraScreen = ({route}) => {
+  const {found} = route.params;
   const navigation = useNavigation();
 
   const cameraRef = useRef(null);
@@ -81,7 +82,7 @@ export const CameraScreen = ({}) => {
   };
 
   const navigateToNextPage = (imageUri) => {
-    navigation.navigate('LostAndFound', { imageUri });
+    navigation.navigate('LostAndFound', { imageUri, found: found });
   };
 
 
