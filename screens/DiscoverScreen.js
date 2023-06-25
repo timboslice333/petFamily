@@ -1,42 +1,212 @@
-import { Text, View, TouchableOpacity, StyleSheet } from "react-native";
+import Colours from "../constants/colors";
+import React from "react";
+import {
+  Text,
+  View,
+  TouchableOpacity,
+  StyleSheet,
+  Image,
+  ScrollView,
+} from "react-native";
+import { AntDesign } from '@expo/vector-icons';
 
 export const DiscoverScreen = ({ navigation }) => {
   return (
-    <>
-      <View style={{ marginTop: 100 }}>
-        <Text>DiscoverScreen</Text>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.pop()}
-        >
-          <Text style={styles.buttonText}>go back to map screen</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate("Posts")}
-        >
-          <Text style={styles.buttonText}>go to posts screen</Text>
-        </TouchableOpacity>
-      </View>
-    </>
+    <View style={styles.container}>
+      <View style={styles.titleBanner}>
+          <TouchableOpacity onPress={() => navigation.pop()}>
+            <View style={styles.backIcon}>
+            <AntDesign name="arrowleft" size={30} color={Colours.primary_variant} />
+            </View>
+          </TouchableOpacity>
+          <Text style={styles.title}>petSOS</Text>
+        </View>
+      <View style={styles.banner} />
+      <ScrollView contentContainerStyle={styles.scrollViewContent}>
+        <View style={styles.contentContainer}>
+          <TouchableOpacity style={styles.picture_1}>
+            <Image
+              source={require("../assets/Disc_Pic.jpeg")}
+              style={styles.picture_1}
+            />
+          </TouchableOpacity>
+          <View style={styles.rectangle}>
+            <Text style={styles.rect_text}>Found my dog Using PetSOS!</Text>
+            <Text style={styles.timer_text}>12 minutes</Text>
+          </View>
+          <Text style={styles.missing_post_text}>Posts for Missing</Text>
+          <ScrollView
+            horizontal
+            contentContainerStyle={styles.missingPostsContainer}
+          >
+            <TouchableOpacity style={styles.missPostContainer}>
+              <Image
+                source={require("../assets/istockphoto-497384624-612x612.jpg")}
+                style={styles.missPostImage}
+              />
+              <View style={styles.missPostTextContainer}>
+                <Text style={styles.missPostText}>Missing Dog Bell</Text>
+                <Text style={styles.missPostTime}>8 minutes</Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.missPostContainer}>
+              <Image
+                source={require("../assets/KOA_Nassau_2697x1517.jpg")}
+                style={styles.missPostImage}
+              />
+              <View style={styles.missPostTextContainer}>
+                <Text style={styles.missPostText}>Candy is Missing!!!</Text>
+                <Text style={styles.missPostTime}>12 minutes</Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.missPostContainer}>
+              <Image
+                source={require("../assets/header_image_sleeping_place_dog.jpg")}
+                style={styles.missPostImage}
+              />
+              <View style={styles.missPostTextContainer}>
+                <Text style={styles.missPostText}>Oreo disappered ...</Text>
+                <Text style={styles.missPostTime}>50 minutes</Text>
+              </View>
+            </TouchableOpacity>
+          </ScrollView>
+          <Text style={styles.missing_post_text}>Posts for Missing</Text>
+            <ScrollView horizontal contentContainerStyle={styles.missingPostsContainer}>
+              <TouchableOpacity style={styles.missPostContainer}>
+                <Image
+                  source={require('../assets/Found1.jpeg')}
+                  style={styles.missPostImage}
+                />
+                <View style={styles.missPostTextContainer}>
+                  <Text style={styles.missPostText}>Missing Dog Bell</Text>
+                  <Text style={styles.missPostTime}>8 minutes</Text>
+                </View>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.missPostContainer}>
+                <Image
+                  source={require("../assets/Found2.jpeg")}
+                  style={styles.missPostImage}
+                />
+                <View style={styles.missPostTextContainer}>
+                  <Text style={styles.missPostText}>Candy is Missing!!!</Text>
+                  <Text style={styles.missPostTime}>12 minutes</Text>
+                </View>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.missPostContainer}>
+                <Image
+                  source={require("../assets/Found3.webp")}
+                  style={styles.missPostImage}
+                />
+                <View style={styles.missPostTextContainer}>
+                  <Text style={styles.missPostText}>Oreo disappeared...</Text>
+                  <Text style={styles.missPostTime}>50 minutes</Text>
+                </View>
+              </TouchableOpacity>
+            </ScrollView>
+        </View>
+      </ScrollView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  button: {
-    marginVertical: 10,
-    borderRadius: 25,
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 15,
-    width: "100%",
-    backgroundColor: "#000000",
+  container: {
+    flex: 1,
   },
-  buttonText: {
-    // color: Colors.secondary,
+  banner: {
+    backgroundColor: Colours.primary,
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "20%",
+  },
+  scrollViewContent: {
+    flexGrow: 1,
+    paddingTop: "5%",
+  },
+  contentContainer: {
+    paddingBottom: 16,
+    alignItems: "center",
+  },
+  picture_1: {
+    borderRadius: 10,
+    width: 400,
+    height: 250,
+    marginBottom: 16,
+  },
+  rectangle: {
+    backgroundColor: "#FDBD4E",
+    borderRadius: 10,
+    width: 400,
+    height: 120, // Adjusted height to cover rect_text and timer_text
+    justifyContent: "center", // Added to center the text vertically
+    paddingHorizontal: 16, // Added padding around the text
+  },
+  rect_text: {
+    fontSize: 36,
+    fontWeight: "600",
+    color: "#2D384C",
+  },
+  timer_text: {
+    fontSize: 16,
+    fontWeight: "400",
+    color: "#2D384C",
+    marginTop: 2,
+  },
+  missing_post_text: {
+    fontSize: 24,
+    fontWeight: "600",
+    color: "#2D384C",
+  },
+  missingPostsContainer: {
+    flexDirection: "row",
+    marginBottom: 16,
+  },
+  missPostContainer: {
+    marginRight: 8,
+  },
+  missPostImage: {
+    borderRadius: 10,
+    width: 200,
+    height: 150,
+  },
+  missPostTextContainer: {
+    backgroundColor: "#2D384C",
+    borderRadius: 10,
+    width: 200,
+    padding: 8,
+  },
+  missPostText: {
     fontSize: 18,
     fontWeight: "600",
-    textTransform: "uppercase",
-    backgroundColor: "#ffffff",
+    color: "#FFFFFF",
+  },
+  missPostTime: {
+    fontSize: 12,
+    fontWeight: "400",
+    color: "#FFFFFF",
+    marginTop: 4,
+  },
+  titleBanner: {
+    backgroundColor: Colours.primary,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "spaceBetween",
+    padding: 16,
+    height: 100,
+    zIndex: 1,
+  },
+  title: {
+    marginTop: 20,
+    padding: 60,
+    fontSize: 20,
+    fontWeight: "bold",
+    textAlign: "center",
+    marginHorizontal: 70,
+    color: Colours.primary_variant,
+  },
+  backIcon: {
+    marginTop: 40,
   },
 });
