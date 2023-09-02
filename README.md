@@ -1,3 +1,6 @@
+Demo：
+https://drive.google.com/file/d/1BQSL3vcVB7AZDswWMv5tIFuqtQbTtVQc/view?usp=drive_link
+
 # petSOS
 Inspiration
 The primary inspiration behind the app is to provide a platform for pet owners who have lost their beloved pets. It aims to leverage the power of community and real-time updates to increase the chances of finding missing pets. By enabling users to post real-time alerts and display them on an interactive map, the app facilitates quick and widespread dissemination of information, increasing the likelihood of finding lost pets. In the meantime, our app PetSOS seeks to create a sense of community among pet owners and animal lovers. It encourages users to come together, support each other, and actively participate in the search for missing pets. By notifying people in the vicinity of a missing pet, PetSOS promotes local engagement and collaboration, fostering a collective effort to reunite pets with their owners.
